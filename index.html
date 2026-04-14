@@ -80,7 +80,7 @@
 
         .logo-wrapper img {
             display: block;
-            height: 35px;
+            height: 45px; /* Increased from 35px for better top-left visibility */
             width: auto;
         }
 
@@ -241,15 +241,19 @@
 
         /* --- FOOTER --- */
         footer {
-            padding: 60px 5%;
+            padding: 80px 5%; /* Increased padding to give the logo a large space */
             text-align: center;
             border-top: 1px solid var(--border-light);
         }
 
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
         .footer-logo img {
-            height: 25px;
-            margin-bottom: 24px;
-            opacity: 0.6;
+            height: 80px; /* Significantly increased from 25px so it is big and clear */
+            width: auto;
+            display: inline-block;
         }
 
         .footer-contact {
@@ -261,8 +265,8 @@
         /* --- ANIMATIONS & CLASSES (FASTER & SUBTLE) --- */
         .fade-up {
             opacity: 0;
-            transform: translateY(20px); /* Reduced distance */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Faster timing */
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .fade-up.visible {
@@ -310,7 +314,7 @@
 
     <header>
         <div class="logo-wrapper">
-            <img src="logo.png" alt="AyuCharge">
+            <a href="https://ibb.co/FLKz8jb0"><img src="https://i.ibb.co/KpXWV3jL/Gemini-Generated-Image-8wzvki8wzvki8wzv.png" alt="Gemini-Generated-Image-8wzvki8wzvki8wzv" border="0"></a>
         </div>
     </header>
 
@@ -381,7 +385,7 @@
 
     <footer class="bg-white">
         <div class="footer-logo">
-            <img src="logo.png" alt="AyuCharge">
+            <a href="https://ibb.co/FLKz8jb0"><img src="https://i.ibb.co/KpXWV3jL/Gemini-Generated-Image-8wzvki8wzvki8wzv.png" alt="Gemini-Generated-Image-8wzvki8wzvki8wzv" border="0"></a>
         </div>
         <div class="footer-contact">project1.innovators@gmail.com</div>
         <div class="footer-contact">&copy; 2026 AyuCharge. All rights reserved.</div>
@@ -409,4 +413,4 @@
         });
     </script>
 </body>
-  </html>
+    </html>
