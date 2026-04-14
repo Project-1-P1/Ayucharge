@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyuCharge | Premium Cognitive & Physical Vitality</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f4f7f6 100%);
+            --bg-alt: #f8faf9;
+            --text-primary: #111111;
+            --text-secondary: #555555;
+            --border-light: rgba(0, 0, 0, 0.06);
+            --accent-gradient: linear-gradient(135deg, #1a2a22 0%, #0d1612 100%);
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.08);
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-white);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 300;
+        }
+
+        /* --- BUTTONS & CTAS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            padding: 22px 60px;
+            font-size: 1.25rem;
+            box-shadow: 0 15px 35px rgba(26, 42, 34, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(26, 42, 34, 0.4);
+            color: #ffffff;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- HEADER (STICKY) --- */
+        header {
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .logo-wrapper {
+            display: inline-block;
+        }
+
+        .logo-wrapper img {
+            display: block;
+            height: 55px; 
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- HERO / FRONT IMAGE SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
+            background: var(--bg-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,0,0,0.02) 0%, rgba(255,255,255,0) 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-family: var(--font-body);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            max-width: 90%;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .product-showcase {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .product-image-box {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4/5;
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .product-image-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- EXPLANATION / BENEFITS SECTION --- */
+        .benefits {
+            background: var(--bg-white);
+            padding-bottom: 60px; /* Reduced padding to flow better into the Back Image section */
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: var(--bg-white);
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        /* --- BACK IMAGE & MAIN CTA SECTION --- */
+        .formulation {
+            background: var(--bg-white);
+            padding-top: 60px; /* Reduced padding to link to the benefits section */
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* --- WHO IS IT FOR & DAILY USE --- */
+        .split-section {
+            background: var(--bg-gradient);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .info-block h3 {
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .info-list li {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* --- THE PROTOCOL (HOW TO USE) --- */
+        .how-to {
+            background: var(--bg-alt);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .step {
+            background: var(--bg-white);
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step h4 {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* --- QUERY SECTION --- */
+        .query-section {
+            background: var(--bg-white);
+            text-align: center;
+            padding: 100px 5%;
+        }
+
+        .query-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .query-section p {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .phone-display {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 5% 60px;
+            text-align: center;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo img {
+            height: 120px;
+            width: auto;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-logo img:hover {
+            transform: scale(1.02);
+        }
+
+        .footer-contact {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- ANIMATIONS & CLASSES --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .hero-content, .split-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 60px;
+            }
+            
+            .hero-text h1 { font-size: 3.2rem; }
+            .hero-text p { max-width: 100%; margin: 0 auto; }
+            
+            .product-showcase { justify-content: center; }
+            
+            .benefits-grid, .steps-grid { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+            }
+
+            .info-list li { text-align: left; }
+            
+            .phone-display { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            
+            .logo-wrapper img { height: 45px; }
+            
+            .btn-primary { padding: 18px 40px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-wrapper">
+            <a href="https://ibb.co/FLKz8jb0">
+                <img src="https://i.ibb.co/V0N6gP7v/logo.png" alt="AyuCharge Logo">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-up">Awaken Your Vitality.</h1>
+                    <h2 class="fade-up delay-1">Power Your Day. The Natural Way.</h2>
+                    <p class="fade-up delay-2">Experience sustained energy and cognitive clarity, rooted in centuries of Ayurvedic wisdom. Engineered for the modern high-performer—no jitters, just clean, balanced power.</p>
+                </div>
+                
+                <div class="product-showcase fade-up delay-3">
+                    <div class="product-image-box">
+                        <img src="front.jpg" alt="AyuCharge Front Packaging">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits container">
+            <div class="section-header fade-up">
+                <h2>Why AyuCharge?</h2>
+                <p>A meticulous formulation designed to optimize both physical stamina and neural clarity.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-up">
+                    <h3>Cognitive Architecture</h3>
+                    <p>Clear mental fog and enhance focus. Our blend acts as a catalyst for sustained concentration during deep work and critical hours.</p>
+                </div>
+                <div class="benefit-card fade-up delay-1">
+                    <h3>Sustained Stamina</h3>
+                    <p>Elevate your physical energy while maintaining inner calm. Experience a smooth energy curve without the typical midday crash.</p>
+                </div>
+                <div class="benefit-card fade-up delay-2">
+                    <h3>Heritage Purity</h3>
+                    <p>Ethically sourced adaptogens and herbs, absolutely free from artificial stimulants, preservatives, and synthetic fillers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="formulation container">
+            <div class="hero-content">
+                <div class="hero-text fade-up">
+                    <h2>The Formulation</h2>
+                    <p>Total transparency in every serving. We honor ancient heritage while meeting stringent modern extraction standards. Review our precise, clinically-inspired ingredient matrix designed to restore physiological balance and deliver enduring vitality.</p>
+                </div>
+                
+                <div class="product-showcase fade-up delay-1">
+                    <div class="product-image-box">
+                        <img src="back.jpg" alt="AyuCharge Back Packaging Formulation">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container fade-up delay-2">
+                <a href="tel:8073957379" class="btn btn-primary">Pre-order Now</a>
+            </div>
+        </section>
+
+        <section class="split-section">
+            <div class="container split-grid">
+                <div class="info-block fade-up">
+                    <h3>Who is it for?</h3>
+                    <p>AyuCharge is built for individuals demanding peak performance from their mind and body.</p>
+                    <ul class="info-list">
+                        <li>Founders & Entrepreneurs building the future.</li>
+                        <li>Developers & Engineers requiring deep focus.</li>
+                        <li>Professionals navigating high-stress environments.</li>
+                        <li>Anyone seeking a clean alternative to artificial energy.</li>
+                    </ul>
+                </div>
+                <div class="info-block fade-up delay-1">
+                    <h3>Daily Use Benefits</h3>
+                    <p>Consistent daily intake compounds the physiological benefits of our adaptogenic blend.</p>
+                    <ul class="info-list">
+                        <li>Regulates cortisol to manage stress response.</li>
+                        <li>Optimizes natural metabolic energy production.</li>
+                        <li>Supports immune resilience and recovery.</li>
+                        <li>Promotes a calm, structured mental state.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-to">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>The Protocol</h2>
+                    <p>Integrate AyuCharge seamlessly into your daily architecture.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step fade-up">
+                        <h4>01. Measure</h4>
+                        <p>Take exactly one level teaspoon of the pure AyuCharge formulation.</p>
+                    </div>
+                    <div class="step fade-up delay-1">
+                        <h4>02. Blend</h4>
+                        <p>Stir smoothly into warm water, milk, or your preferred morning beverage.</p>
+                    </div>
+                    <div class="step fade-up delay-2">
+                        <h4>03. Thrive</h4>
+                        <p>Consume daily during your morning routine to unlock optimal metabolic energy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="query-section">
+            <div class="container fade-up">
+                <h2>Have Questions?</h2>
+                <p>Our specialists are ready to discuss how AyuCharge can elevate your daily performance. Call us directly at:</p>
+                <span class="phone-display">8073957379</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo fade-up">
+            <a href="https://ibb.co/FLKz8jb0">
+                <img src="https://i.ibb.co/V0N6gP7v/logo.png" alt="AyuCharge Logo">
+            </a>
+        </div>
+        <div class="footer-contact fade-up delay-1">Contact: project1.innovators@gmail.com</div>
+        <div class="footer-contact fade-up delay-1">Phone: 8073957379</div>
+        <div class="footer-contact fade-up delay-2" style="margin-top: 30px; font-size: 0.85rem; opacity: 0.7;">&copy; 2026 AyuCharge. All rights reserved.</div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+        </script>
+        </body>
+        </html>
